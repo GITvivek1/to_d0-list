@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "todo";
+$dbname = "to_do";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -69,8 +69,155 @@ $result = $conn->query($sql);
 <html>
 <head>
   <title>To Do List</title>
+  <!-- Add some CSS styles -->
+  <style>
+    /* Use a custom font */
+    @import url('https://fonts.googleapis.com/css?family=Roboto');
+
+    /* Define a color scheme */
+    :root {
+      --primary-color: #2196f3;
+      --secondary-color: #f44336;
+      --background-color: #f0f0f0;
+      --text-color: #333333;
+    }
+
+    /* Apply the font and background color to the body */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--background-color);
+    }
+
+    /* Center the main content */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Style the heading */
+    h1 {
+      text-align: center;
+      color: var(--primary-color);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      /* Add a simple animation effect */
+      animation-name: slide-in;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+    }
+
+    /* Define the slide-in animation */
+    @keyframes slide-in {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(0); }
+    }
+
+    /* Style the form */
+    form {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    /* Style the input field */
+    input[type=text] {
+      flex-grow: 1;
+      padding: 10px;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    /* Style the submit button */
+    input[type=submit] {
+      margin-left: 10px;
+      padding: 10px 20px;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      background-color: var(--primary-color);
+      color: white;
+      cursor: pointer;
+      /* Add a transition effect */
+      transition: transform 0.3s;
+    }
+
+    /* Add a hover effect to the submit button */
+    input[type=submit]:hover {
+      transform: scale(1.1);
+    }
+
+    /* Style the table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    /* Style the table header */
+    th {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 10px;
+      text-align: left;
+    }
+
+    /* Style the table cells */
+    td {
+      padding: 10px;
+      border-bottom: 1px solid var(--background-color);
+    }
+
+    /* Style the status column */
+    td:nth-child(3) {
+      text-transform: uppercase;
+      font-weight: bold;
+      color: var(--secondary-color);
+    }
+
+    /* Style the action column */
+    td:nth-child(4) {
+      display: flex;
+      align-items: center;
+    }
+
+    /* Style the select element */
+    select {
+      margin-right: 10px;
+      padding: 5px;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      background-color: var(--background-color);
+      color: var(--text-color);
+    }
+
+    /* Style the update and delete buttons */
+    input[type=submit][name=update],
+    input[type=submit][name=delete] {
+      padding: 5px 10px;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Style the update button */
+    input[type=submit][name=update] {
+      background-color: var(--primary-color);
+    }
+
+    /* Style the delete button */
+    input[type=submit][name=delete] {
+      background-color: var(--secondary-color);
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
   <h1>To Do List</h1>
   <form action="" method="post">
     <label for="task">Enter a new task:</label>
@@ -111,6 +258,7 @@ $result = $conn->query($sql);
     }
     ?>
   </table>
+  </div>
 </body>
 </html>
 
